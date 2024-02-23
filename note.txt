@@ -1,0 +1,263 @@
+import Image from './assets/image.jpg';
+  body {
+  background-color: green;
+  /* margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+
+    {/* 1 st way- public folder way */}
+    {/* absolute path */}
+    {/* <img src='http://localhost:3000/image.jpg' alt=''></img> */}
+    {/* relative path */}
+    {/* <img src='/image.jpg' alt=''></img> */}
+    {/* 2nd import */}
+    {/* <img src={Image} alt=''></img> */}
+
+
+    virtual dom => before state and after state compare => only change part => render cha pya
+
+   // array post 
+
+import './App.css';
+import {useState} from 'react';
+ 
+function App() {
+  // let name = "Jennie Kim";
+
+  let [name,setName] = useState("Jennie Kim");// [getter, setterfun]
+  let [posts,setPosts] = useState([
+    { 
+      id : 1,
+      title : 'First post'
+    },
+    { 
+      id : 2,
+      title : 'Second post'
+    },
+    { 
+      id : 3,
+      title : 'Third post'
+    }
+
+  ]);
+  console.log(posts);
+
+  let changeName = () => {
+    setName('Lisa');
+    console.log(name);
+  }
+  return (
+  <div className='app'>
+    <h1>Hello {name}</h1>
+    <button onClick = {changeName}>change name</button>
+    <h1>Posts</h1>
+    <ul>
+      {posts.map((post)=>(
+      <li key = {post.id}>{post.title}</li>
+      ))}
+    </ul>
+  </div>
+
+  );
+}
+
+export default App;
+
+
+import React from 'react'
+import {useState} from 'react'
+
+export default function App() {
+
+  let [count,setCount] = useState(0);
+
+  let increment = () => {
+    setCount((prevState)=> prevState+1);
+    setCount((prevState)=> prevState+1);
+    setCount((prevState)=> prevState+1);
+    setCount((prevState)=> prevState+1);
+  }
+  return (
+    <div>
+      <h1>Counter</h1>
+      <h3>Count - {count}</h3>
+      <button onClick= {increment}>increment</button>
+    </div>
+  )
+}
+
+
+import './App.css';
+import {useState} from 'react';
+ 
+function App() {
+  // let name = "Jennie Kim";
+
+  let [name,setName] = useState("Jennie Kim");// [getter, setterfun]
+  let [posts,setPosts] = useState([
+    { 
+      id : 1,
+      title : 'First post'
+    },
+    { 
+      id : 2,
+      title : 'Second post'
+    },
+    { 
+      id : 3,
+      title : 'Third post'
+    }
+
+  ]);
+  console.log(posts);
+
+  let changeName = () => {
+    setName('Lisa');
+    console.log(name);
+  }
+
+  let deletePost = (id) =>{
+    setPosts((prevState)=> prevState.filter(post => post.id !==id))
+    
+  }
+  return (
+  <div className='app'>
+    <h1>Hello {name}</h1>
+    <button onClick = {changeName}>change name</button>
+    <h1>Posts</h1>
+    <ul>
+      {posts.map((post)=>(
+      <li key = {post.id}>
+        {post.title}
+        {/* event function mhr parameter pass lote chin yin function reference 1 khu create p lote */}
+        <button onClick={()=>deletePost(post.id)}>delete</button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  );
+}
+
+export default App;
+
+
+import './App.css';
+import {useState} from 'react';
+ 
+function App() {
+  // let name = "Jennie Kim";
+
+  let [name,setName] = useState("Jennie Kim");// [getter, setterfun]
+  let [posts,setPosts] = useState([
+    { 
+      id : 1,
+      title : 'First post'
+    },
+    { 
+      id : 2,
+      title : 'Second post'
+    },
+    { 
+      id : 3,
+      title : 'Third post'
+    }
+
+  ]);
+  console.log(posts);
+
+  let changeName = () => {
+    setName('Lisa');
+    console.log(name);
+  }
+
+  let deletePost = (id) =>{
+    setPosts((prevState)=> prevState.filter(post => post.id !==id))
+    
+  }
+  return (
+  <div className='app'>
+    <h1>Hello {name}</h1>
+    <button onClick = {changeName}>change name</button>
+    <h1>Posts</h1>
+    <ul>
+      {!!posts.length && posts.map((post)=>(
+      <li key = {post.id}>
+        {post.title}
+        <button onClick={()=>deletePost(post.id)}>delete</button>
+        </li>
+      ))}
+      {!posts.length && <p>No Posts Available</p>}
+    </ul>
+  </div>
+
+  );
+}
+
+export default App;
+
+
+React component
+
+Component tree structure
+
+
+                            COMPONENT PROPS                      
+                            Posts = {{},{},{}}
+                                  App.js
+                                  /   \
+                                /       \
+                              /           \
+                            /               \
+                          /                   \
+                        /                       \
+                      /                           \
+                    /                               \
+            Navbar.js                                  PostsList.js Posts = {{},{},{}}
+            /     \                                    /     |     \
+          /         \                                 /      |      \
+        /            \                               /       |        \
+logo.js                   Links.js         SinglePost.js   Singlepost.js  SinglePost.js
+                                            Post ={}         Post = {}       Post = { }
+
+
+
+                            |
+                            V
+= logo                    =Home     =Posts     <------links                      <= Navbar
+
+
+
+PostsList
+
+
+Single post                         Single post                     Single post
+
+
+react fragranet = <> </>
+
+components using => main purpose => reuseable phit chin tr
+
+
+children props
+
+portal  
+ ReactDom  library mhr par tat create-portal
+
+ global css write chin yin => src => index.css 
+ components style sheet => components css is always can override
+
+
+
