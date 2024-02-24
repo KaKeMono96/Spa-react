@@ -33,7 +33,7 @@ function App() {
         <h1>Zoom class is available now.</h1>
         <p>feel free to <a href=''>join</a> here</p>
       </Modal> */}
-      {showModal && <Modal>
+      {showModal && <Modal danger>
         <h1>This is testing</h1>
         <p>lorem15
           hfkgslvhew;bewhg;weohiegrgie
