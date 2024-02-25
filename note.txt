@@ -248,6 +248,13 @@ Single post                         Single post                     Single post
 
 react fragranet = <> </>
 
+{/* <Modal/> */}
+       {/* modal content */}
+      {/* <Modal>
+        <h1>Zoom class is available now.</h1>
+        <p>feel free to <a href=''>join</a> here</p>
+      </Modal> */}
+
 components using => main purpose => reuseable phit chin tr
 
 
@@ -259,6 +266,8 @@ portal
  global css write chin yin => src => index.css 
  components style sheet => components css is always can override
 
+//outer bracket for dynamic value, inner bracket for js object
+ 
  inline css
  dynamic class name 
 
@@ -270,6 +279,139 @@ portal
 
 css module system
 
+input tway mhr on change event shi tl
+   // let onChangeHandler = (e) => {
+    //     console.log(e.target.value)
+    // }
 
+two way data binding
+
+on submit event
+
+useRef hook
+
+post form => index.js
+
+
+import React, { useState } from 'react'
+import './index.css';
+import {useRef} from 'react';
+
+export default function Index({addPost}) {
+
+    // let [title, setTitle] = useState("")
+
+    let title = useRef();
+    let resetForm = () => {
+        // setTitle('');
+        console.log('update successfully');
+    }
+
+    let upload_post = (e) => {
+    e.preventDefault(); // prevent refreshing page
+    console.log(title);
+    // let post = {
+    //     id : Math.floor(Math.random()*10000),
+    //     title : title
+    // }
+    // resetForm()
+    // addPost(post);
+     }
+  return (
+    <form className='post-form' onSubmit={upload_post}>
+        <h1>Create Post</h1>
+        <div className='form-control'>
+            <label htmlFor=''>Title</label>
+            <input type='text' ref={title}/>
+        </div>
+        {/* <p>{title}</p> */}
+        {/* <button type='button' onClick={resetForm}>reset form</button> */}
+        <div className='form-control'>
+            <button type='submit'>Post Now</button>
+        </div>
+    </form>
+  )
+
+}
+
+
+useRef
+
+import React, { useState } from 'react'
+import './index.css';
+import {useRef} from 'react';
+
+export default function Index({addPost}) {
+
+    let title = useRef();
+    let resetForm = () => {
+        title.current.value = '';
+        console.log('update successfully');
+    }
+
+    let upload_post = (e) => {
+    e.preventDefault(); // prevent refreshing page
+    let post = {
+        id : Math.floor(Math.random()*10000),
+        title : title.current.value
+    }
+    resetForm()
+    addPost(post);
+     }
+  return (
+    <form className='post-form' onSubmit={upload_post}>
+        <h1>Create Post</h1>
+        <div className='form-control'>
+            <label htmlFor=''>Title</label>
+            <input type='text' ref={title}/>
+        </div>
+        <div className='form-control'>
+            <button type='submit'>Post Now</button>
+        </div>
+    </form>
+  )
+}
+
+
+postForm => index.js 99 % use this type
+
+
+import React, { useState } from 'react'
+import './index.css';
+import {useRef} from 'react';
+
+export default function Index({addPost}) {
+    let [title,  setTitle] = useState('');
+
+    let resetForm = () => {
+        setTitle ('');
+        console.log('update successfully');
+    }
+
+    let upload_post = (e) => {
+    e.preventDefault(); // prevent refreshing page
+    let post = {
+        id : Math.floor(Math.random()*10000),
+        title : title
+    }
+    resetForm()
+    addPost(post);
+     }
+  return (
+    <form className='post-form' onSubmit={upload_post}>
+        <h1>Create Post</h1>
+        <div className='form-control'>
+            <label htmlFor=''>Title</label>
+            <input type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
+        </div>
+        <div className='form-control'>
+            <button type='submit'>Post Now</button>
+        </div>
+    </form>
+  )
+}
+
+
+select box example // post form => index.js
 
 
